@@ -1,0 +1,41 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  text-align: center;
+  font-family: sans-serif;
+}
+
+h1 {
+  margin: 0.5em 0 1em;
+}
+
+table {
+  margin: auto;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+td {
+  border: 1px solid gray;
+}
+
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  
+  display: block;
+  width: 20px;
+  height: 20px;
+  
+  border: 0;
+}
+
+input[type="checkbox"]:checked {
+  background: black;
+  /* Fix for Firefox checkboxes... */
+  box-shadow: 0 0 0 99px black inset;
+}
