@@ -1,3 +1,7 @@
+# Game of Life
+
+> [Play by Play: HTML, CSS, and JavaScript with Lea Verou](https://www.pluralsight.com/courses/play-by-play-lea-verou)
+
 ### Data Model & Game Mechanics
 
 - Set up a grid with black and white squares
@@ -12,6 +16,4 @@
 - Checkboxes are used instead of canvas because the functionality is already built-in.
 - Begin with implementing the logic so that it works in the console, then focus on the interface to drive that code.
 
----
-
-
+Other notes may be found inside the code itself (as comments).
