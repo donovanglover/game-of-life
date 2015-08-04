@@ -154,6 +154,7 @@ var game = new Life([
           var checkbox = document.createElement("input");
           checkbox.type = "checkbox";
           this.checkboxes[y][x] = checkbox;
+          checkbox.coords = [y, x];
           
           cell.appendChild(checkbox);
           row.appendChild(cell);
@@ -164,9 +165,45 @@ var game = new Life([
       }
       
       this.grid.addEventListener("change", function(event) {
-        if(event.target.nodeName.toLowerCase() == "input") {
+        if(event.target.nodeName.toLowerCase() === "input") {
           me.started = false;
         }
+      });
+      
+      this.grid.addEventListener("keyup", function(event) {
+        var checkbox = event.target;
+        
+        if(event.target.nodeName.toLowerCase() === "input") {
+          var coords = checkbox.coords;
+          var y = coords[0];
+          var x = coords[1];
+          
+          // TODO: Make key events wrap around
+          switch(event.keyCode) {
+            case 37: // left
+              if(x > 0) {
+                me.checkboxes[y][x-1].focus();
+              }
+              break;
+            case 38: // up
+              if(y > 0) {
+                me.checkboxes[y-1][x].focus();
+              }
+              break;
+            case 39: // right
+              if(x < me.size - 1) {
+                me.checkboxes[y][x+1].focus();
+              }
+              break;
+            case 40: // down
+              if(y < me.size - 1) {
+                me.checkboxes[y+1][x].focus();
+              }
+              break;
+          }
+          
+        }
+        
       });
       
       this.grid.appendChild(fragment);
@@ -224,10 +261,12 @@ var lifeView = new LifeView(document.getElementById("grid"), 12);
   });
 
   $("#autoplay").addEventListener("change", function() {
-    buttons.next.textContent = this.checked ? "Start" : "Next";
+    buttons.next.disabled = this.checked;
     lifeView.autoplay = this.checked;
     
-    if(!this.checked) {
+    if(this.checked) {
+      lifeView.next();
+    } else {
       clearTimeout(lifeView.timer);
     }
     
