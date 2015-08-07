@@ -121,8 +121,8 @@
           switch(e.keyCode) {
             case 37: return (x > 0) ? me.checkboxes[y][x-1].focus() : me.checkboxes[y][size-1].focus();
             case 38: return (y > 0) ? me.checkboxes[y-1][x].focus() : me.checkboxes[size-1][x].focus();
-            case 39: return (x < me.size - 1) ? me.checkboxes[y][x+1].focus() : me.checkboxes[y][0].focus();
-            case 40: return (y < me.size - 1) ? me.checkboxes[y+1][x].focus() : me.checkboxes[0][x].focus();
+            case 39: return (x < size - 1) ? me.checkboxes[y][x+1].focus() : me.checkboxes[y][0].focus();
+            case 40: return (y < size - 1) ? me.checkboxes[y+1][x].focus() : me.checkboxes[0][x].focus();
           }
         }
       });
