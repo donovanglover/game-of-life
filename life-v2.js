@@ -119,34 +119,10 @@
         if(checkbox.nodeName.toLowerCase() === "input") {
           var coords = checkbox.coords, y = coords[0], x = coords[1];
           switch(e.keyCode) {
-            case 37: // left
-              if(x > 0) {
-                me.checkboxes[y][x-1].focus();
-              } else {
-                me.checkboxes[y][size-1].focus();
-              }
-              break;
-            case 38: // up
-              if(y > 0) {
-                me.checkboxes[y-1][x].focus();
-              } else {
-                me.checkboxes[size-1][x].focus();
-              }
-              break;
-            case 39: // right
-              if(x < me.size - 1) {
-                me.checkboxes[y][x+1].focus();
-              } else {
-                me.checkboxes[y][0].focus();
-              }
-              break;
-            case 40: // down
-              if(y < me.size - 1) {
-                me.checkboxes[y+1][x].focus();
-              } else {
-                me.checkboxes[0][x].focus();
-              }
-              break;
+            case 37: return (x > 0) ? me.checkboxes[y][x-1].focus() : me.checkboxes[y][size-1].focus();
+            case 38: return (y > 0) ? me.checkboxes[y-1][x].focus() : me.checkboxes[size-1][x].focus();
+            case 39: return (x < me.size - 1) ? me.checkboxes[y][x+1].focus() : me.checkboxes[y][0].focus();
+            case 40: return (y < me.size - 1) ? me.checkboxes[y+1][x].focus() : me.checkboxes[0][x].focus();
           }
         }
       });
